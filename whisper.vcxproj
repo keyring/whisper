@@ -82,6 +82,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Common\AppUtil.cpp" />
+    <ClCompile Include="Src\Common\Timer.cpp" />
+    <ClCompile Include="Src\Common\WinApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Common\AppUtil.h" />
+    <ClInclude Include="Src\Common\Timer.h" />
+    <ClInclude Include="Src\Common\WinApp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -17,18 +17,24 @@
 #include <d3dx11Effect.h>
 #include <xnamath.h>
 #include <dxerr.h>
-#include <cassert.h>
+#include <assert.h>
 #include <ctime>
 #include <algorithm>
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <iostream>
 #include <vector>
 
 #if defined (DEBUG) || defined (_DEBUG)
-#ifndef HR
-#define HR(x) { HRESULT hr = (x); if(FAILED(hr)){ \
-	DXTrace(__FILE__,(DWORD)__LINE__,hr, L#x, true);}}
+	#ifndef HR
+	#define HR(x) { HRESULT hr = (x); if(FAILED(hr)){ \
+		DXTrace(__FILE__,(DWORD)__LINE__,hr, L#x, true);}}
+	#endif
+#else
+	#ifndef HR
+	#defien HR(x) (x)
+	#endif
 #endif
 
 #define SafeRelease(x) { if(x) { (x)->Release(); (x) = NULL; } }

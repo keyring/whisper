@@ -93,7 +93,7 @@ int WinApp::run(){
 
 	MSG msg = {0};
 
-	m_Timer.Reset();
+	m_timer.Reset();
 
 	while(msg.message != WM_QUIT){
 		if(PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE)){
@@ -104,11 +104,11 @@ int WinApp::run(){
 			m_timer.Tick();
 			if(!m_isPaused){
 				CalculateFPS();
-				UpdateScene(m_Timer.DeltaTime());
+				UpdateScene(m_timer.DeltaTime());
 				RenderScene();
 			}
 			else{
-				sleep(200);
+				Sleep(200);
 			}
 		}
 	}
@@ -158,8 +158,8 @@ void WinApp::OnResize(){
 	depthStencilDesc.CPUAccessFlags = 0;
 	depthStencilDesc.MiscFlags      = 0;
 
-	HR(m_d3dDevice->CreateTexture2D(&depthStencilDesc, 0, m_depthStencilBuffer));
-	HR(m_d3dDevice->CreateStencilView(m_depthStencilBuffer, 0, &m_depthStencilView));
+	HR(m_d3dDevice->CreateTexture2D(&depthStencilDesc, 0, &m_depthStencilBuffer));
+	HR(m_d3dDevice->CreateDepthStencilView(m_depthStencilBuffer, 0, &m_depthStencilView));
 
 	m_d3dDeviceContext->OMSetRenderTargets(1, &m_renderTargetView, m_depthStencilView);
 
@@ -172,13 +172,13 @@ void WinApp::OnResize(){
 
 	m_d3dDeviceContext->RSSetViewports(1, &m_screenViewport);
 
-}}
+}
 
-LRESULT CALLBACK WinApp::WinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM, lParam){
+LRESULT CALLBACK WinApp::WinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam){
 
 	switch(msg){
-		case WM_ACTIVE:
-			if(LOWORD(wParam) == WM_INACTIVE){
+		case WM_ACTIVATE:
+			if(LOWORD(wParam) == WA_INACTIVE){
 				m_isPaused = true;
 				m_timer.Stop();
 			}
@@ -218,7 +218,7 @@ LRESULT CALLBACK WinApp::WinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM, lPa
 
 						OnResize();
 					}
-					else if(m_resizing){
+					else if(m_isResizing){
 
 					}
 					else{
@@ -231,19 +231,19 @@ LRESULT CALLBACK WinApp::WinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM, lPa
 		case WM_ENTERSIZEMOVE:
 			m_isPaused   = true;
 			m_isResizing = true;
-			m_istimer.Stop();
+			m_timer.Stop();
 			return 0;
 
 		case WM_EXITSIZEMOVE:
 			m_isPaused   = false;
 			m_isResizing = false;
-			m_timer,Start();
+			m_timer.Start();
 			OnResize();
 			return 0;
 
 		case WM_LBUTTONDOWN:
 		case WM_MBUTTONDOWN:
-		case WM_RBUTTONDOWM:
+		case WM_RBUTTONDOWN:
 			OnMouseDown(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
 			return 0;
 
@@ -281,7 +281,7 @@ bool WinApp::InitMainWindow(){
 	wc.cbClsExtra     = 0;
 	wc.cbWndExtra     = 0;
 	wc.hInstance      = m_hInstance;
-	wc.hIcon          = LoadIcon(NULL, IDC_APPLICATION);
+	wc.hIcon          = LoadIcon(NULL, IDI_APPLICATION);
 	wc.hCursor        = LoadCursor(NULL, IDC_ARROW);
 	wc.hbrBackground  = (HBRUSH)GetStockObject(NULL_BRUSH);
 	wc.lpszMenuName   = NULL;
@@ -293,12 +293,12 @@ bool WinApp::InitMainWindow(){
 	}
 
 	RECT winRect = { 0, 0, m_appWidth, m_appHeight };
-	AdjustWindwoRect( &winRect, WS_OVERLAPPEDNWINDOW, false);
+	AdjustWindowRect( &winRect, WS_OVERLAPPEDWINDOW, false);
 	int width  = winRect.right - winRect.left;
 	int height = winRect.bottom - winRect.top;
 
 	m_mainWnd = CreateWindow(
-		       	L"Whisper", 
+		    L"Whisper", 
 			m_appTitle.c_str(),
 			WS_OVERLAPPEDWINDOW,
 			CW_USEDEFAULT,
@@ -307,8 +307,9 @@ bool WinApp::InitMainWindow(){
 			height,
 			NULL,
 			NULL,
-			m_hIstance,
+			m_hInstance,
 			NULL);
+
 	if(!m_mainWnd){
 		MessageBox(NULL, L"Create window failed!", L"Error", MB_OK);
 		return false;
@@ -400,7 +401,7 @@ bool WinApp::InitDirect3D(){
 	DXGI_SWAP_CHAIN_DESC scDesc = {0};
 	scDesc.BufferDesc.Width  = m_appWidth;
 	scDesc.BufferDesc.Height = m_appHeight;
-	scDesc.BufferDesc.RefreshRate.Numberator = 60;
+	scDesc.BufferDesc.RefreshRate.Numerator = 60;
 	scDesc.BufferDesc.RefreshRate.Denominator = 1;
 	scDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 	scDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;

@@ -21,7 +21,7 @@ Timer::Timer():
 
 	__int64 frequency;
 	QueryPerformanceFrequency(reinterpret_cast<LARGE_INTEGER*>(&frequency));
-	m_scesPerCount = 1.0 / (double)frequency;
+	m_secsPerCount = 1.0 / (double)frequency;
 }
 
 float Timer::TotalTime() const {
@@ -57,7 +57,7 @@ void Timer::Stop(){
 
 	if(!m_stopped){
 		__int64 currTime;
-		QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&cuurTime));
+		QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&currTime));
 		m_stopTime = currTime;
 		m_stopped = true;
 	}

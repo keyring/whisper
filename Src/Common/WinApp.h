@@ -35,7 +35,7 @@ class WinApp{
 		virtual LRESULT CALLBACK WinProc(HWND, UINT, WPARAM, LPARAM);
 
 		virtual void OnMouseDown(WPARAM, int, int){}
-		virtual void OnMouseUP  (WPARAM, int, int){}
+		virtual void OnMouseUp  (WPARAM, int, int){}
 		virtual void OnMouseMove(WPARAM, int, int){}
 
 	protected:
