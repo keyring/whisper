@@ -83,11 +83,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\Common\AppUtil.cpp" />
+    <ClCompile Include="Src\Common\BasicGeo.cpp" />
+    <ClCompile Include="Src\Common\Camera.cpp" />
+    <ClCompile Include="Src\Common\Sky.cpp" />
     <ClCompile Include="Src\Common\Timer.cpp" />
     <ClCompile Include="Src\Common\WinApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Common\AppUtil.h" />
+    <ClInclude Include="Src\Common\BasicGeo.h" />
+    <ClInclude Include="Src\Common\Camera.h" />
+    <ClInclude Include="Src\Common\d3dx11effect.h" />
+    <ClInclude Include="Src\Common\Sky.h" />
     <ClInclude Include="Src\Common\Timer.h" />
     <ClInclude Include="Src\Common\WinApp.h" />
   </ItemGroup>

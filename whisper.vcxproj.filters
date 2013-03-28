@@ -30,6 +30,15 @@
     <ClCompile Include="Src\Common\AppUtil.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Common\Camera.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Common\BasicGeo.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Common\Sky.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Common\WinApp.h">
@@ -39,6 +48,18 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="Src\Common\Timer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Common\Camera.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Common\BasicGeo.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Common\Sky.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Common\d3dx11effect.h">
       <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
