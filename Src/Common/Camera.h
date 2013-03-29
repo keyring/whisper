@@ -8,7 +8,6 @@
 #ifndef __CAMERA_H__
 #define __CAMREA_H__ 1
 
-#include <cmath>
 
 #include "AppUtil.h"
 

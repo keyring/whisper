@@ -55,7 +55,7 @@ struct Material{
 
 /*---- functions for lighting calculation----*/
 
-void ComputeDirecLight( Material mater,
+void ComputeDirectLight( Material mater,
 						DirectLight L,
 						float3 normal,
 						float3 toEye,
@@ -120,7 +120,7 @@ void ComputePointLight( Material mater,
 	}
 
 	//Attenuation
-	float att = 1.0f / dot(L.Attenuation, float3(1.0f, dist, diat * dist));
+	float att = 1.0f / dot(L.Attenuation, float3(1.0f, dist, dist * dist));
 
 	diffuse  *= att;
 	specular *= att;
@@ -155,14 +155,14 @@ void ComputeSpotLight ( Material mater,
 	[flatten]
 	if(diffuseFactor > 0.0f){
 		float3 v = reflect(-lightVec, normal);
-		float sprcFator = pow(max(dot(v, toEye), 0.0f), mater.Specular.w);
+		float specFactor = pow(max(dot(v, toEye), 0.0f), mater.Specular.w);
 
 		diffuse  = diffuseFactor * mater.Diffuse * L.Diffuse;
 		specular = specFactor * mater.Specular * L.Specular;
 	}
 
 	//Scale by spotlight factor and attenuate.
-	float spot = pow(max(dot(-lightVec, L.Direction) 0.0f), L.Spot);
+	float spot = pow(max(dot(-lightVec, L.Direction), 0.0f), L.Spot);
 
 	//Scale by spotlight factor and attenuate.
 	float att = spot / dot(L.Attenuation, float3(1.0f, dist, dist * dist));

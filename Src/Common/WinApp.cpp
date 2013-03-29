@@ -89,7 +89,7 @@ bool WinApp::Init(){
 	return true;
 }
 
-int WinApp::run(){
+int WinApp::Run(){
 
 	MSG msg = {0};
 
@@ -259,7 +259,7 @@ LRESULT CALLBACK WinApp::WinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
 
 		case WM_GETMINMAXINFO:
 			((MINMAXINFO *)lParam)->ptMinTrackSize.x = 400;
-			((MINMAXINFO *)lParam)->ptMinTrackSize.uy = 300;
+			((MINMAXINFO *)lParam)->ptMinTrackSize.y = 300;
 			return 0;
 
 		case WM_MENUCHAR:
@@ -358,7 +358,7 @@ bool WinApp::InitDirect3D(){
 	       return false;
 	}
 
-	HR(m_d3dDevice-CheckMultisampleQualityLevels(
+	HR(m_d3dDevice->CheckMultisampleQualityLevels(
 			DXGI_FORMAT_R8G8B8A8_UNORM,
 			4,
 			&m_4xMsaaQuality));

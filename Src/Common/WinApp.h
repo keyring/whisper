@@ -25,7 +25,7 @@ class WinApp{
 		int       AppWidth() const;
 		int       AppHeight() const;
 
-		int run();
+		int Run();
 
 		virtual bool Init();
 		virtual void OnResize();

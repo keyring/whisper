@@ -5,8 +5,6 @@
  * 					--code with gVim :)
  *************************************************************************/
 
-#include <xnamath.h>
-
 #include "BasicGeo.h"
 
 void BasicGeo::CreateSphere(float radius, UINT sliceCount, UINT stackCount, MeshData& meshData){
@@ -53,8 +51,8 @@ void BasicGeo::CreateSphere(float radius, UINT sliceCount, UINT stackCount, Mesh
 			XMVECTOR p = XMLoadFloat3(&v.Position);
 			XMStoreFloat3(&v.Normal, XMVector3Normalize(p));
 
-			v.TexC.x = theta / XM_2PI;
-			v.TexC.y = phi / XM_PI;
+			v.TexCoord.x = theta / XM_2PI;
+			v.TexCoord.y = phi / XM_PI;
 
 			meshData.Vertices.push_back( v );
 		}

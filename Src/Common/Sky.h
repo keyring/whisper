@@ -20,11 +20,11 @@ class Sky{
 
 		ID3D11ShaderResourceView *CreateSkySRV();
 
-		void Draw(ID3D11DeviceContext *dc, const Camera &camera);
+		void Draw(ID3D11DeviceContext *dc, const Camera& camera);
 
 	private:
-		Sky(const Sky &rhs);
-		Sky& operator=(const Sky &rhs);
+		Sky(const Sky& rhs);
+		Sky& operator=(const Sky& rhs);
 		
 	private:
 		ID3D11Buffer *m_VB;

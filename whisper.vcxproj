@@ -60,7 +60,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d11.lib;d3dx11d.lib;d3dcompiler.lib;DxErr.lib;dxgi.lib;dxguid.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;d3dx11d.lib;D3DCompiler.lib;Effects11d.lib;dxerr.lib;dxgi.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -85,29 +85,46 @@
     <ClCompile Include="Src\Common\AppUtil.cpp" />
     <ClCompile Include="Src\Common\BasicGeo.cpp" />
     <ClCompile Include="Src\Common\Camera.cpp" />
+    <ClCompile Include="Src\Common\Effects.cpp" />
     <ClCompile Include="Src\Common\Light.cpp" />
     <ClCompile Include="Src\Common\Sky.cpp" />
     <ClCompile Include="Src\Common\Timer.cpp" />
+    <ClCompile Include="Src\Common\Vertex..cpp" />
     <ClCompile Include="Src\Common\WinApp.cpp" />
-    <ClCompile Include="Src\Test\Effects.cpp" />
-    <ClCompile Include="Src\Test\Vertex..cpp" />
+    <ClCompile Include="Src\Test\CubeMapDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Common\AppUtil.h" />
     <ClInclude Include="Src\Common\BasicGeo.h" />
     <ClInclude Include="Src\Common\Camera.h" />
     <ClInclude Include="Src\Common\d3dx11effect.h" />
+    <ClInclude Include="Src\Common\Effects.h" />
     <ClInclude Include="Src\Common\Light.h" />
     <ClInclude Include="Src\Common\Sky.h" />
     <ClInclude Include="Src\Common\Timer.h" />
+    <ClInclude Include="Src\Common\Vertex.h" />
     <ClInclude Include="Src\Common\WinApp.h" />
-    <ClInclude Include="Src\Test\Effects.h" />
-    <ClInclude Include="Src\Test\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Basic.fx" />
+    <CustomBuild Include="Src\FX\Basic.fx">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /Fc /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\%(Filename).fxo" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc compile for debug: %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\%(Filename).fxo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">fxc /T fx_5_0 /Fo "%(RelativeDir)\%(Filename).fxo" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">fxc compile for release: %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)\%(Filename).fxo</Outputs>
+    </CustomBuild>
     <None Include="Src\FX\Light.fx" />
-    <None Include="Src\FX\Sky.fx" />
+    <CustomBuild Include="Src\FX\Sky.fx">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /Fc /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\%(Filename).fxo" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc compile for debug: %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\%(Filename).fxo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">fxc /T fx_5_0 /Fo "%(RelativeDir)\%(Filename).fxo" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">fxc compile for release: %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)\%(Filename).fxo</Outputs>
+    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

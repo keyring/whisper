@@ -27,10 +27,10 @@ Timer::Timer():
 float Timer::TotalTime() const {
 
 	if(m_stopped){
-		return (float)(m_stopTime - m_pausedTime - m_baseTime)*m_secsPerCount;
+		return (float)((m_stopTime - m_pausedTime - m_baseTime)*m_secsPerCount);
 	}
 	else{
-		return (float)(m_currTime - m_pausedTime - m_baseTime)*m_secsPerCount;
+		return (float)((m_currTime - m_pausedTime - m_baseTime)*m_secsPerCount);
 	}
 }
 

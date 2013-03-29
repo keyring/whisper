@@ -88,8 +88,8 @@ XMMATRIX Camera::getViewProjMat(void) const {
 
 float Camera::getFovX(void) const {
 
-	float halfWidth = 0.5 * getNearPlaneWidth();
-	return 2.0 * atan( halfWidth / m_nearZ);
+	float halfWidth = 0.5f * getNearPlaneWidth();
+	return 2.0f * atan( halfWidth / m_nearZ);
 }
 
 float Camera::getFovY(void) const {
@@ -139,7 +139,7 @@ void Camera::setProjParam(float fovy, float aspect, float nearz, float farz){
 	m_nearZ  = nearz;
 	m_farZ   = farz;
 
-	m_nearPlaneHeight = 2,0f * m_nearZ * tanf( 0.5f * m_fovY );
+	m_nearPlaneHeight = 2.0f * m_nearZ * tanf( 0.5f * m_fovY );
 	m_farPlaneHeight  = 2.0f * m_farZ * tanf( 0.5f * m_fovY );
 
 	XMMATRIX p = XMMatrixPerspectiveFovLH( m_fovY, m_aspect, m_nearZ, m_farZ );

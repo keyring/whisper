@@ -8,7 +8,7 @@
 #ifndef __LIGHT_H__
 #define __LIGHT_H__ 1
 
-#include <windows.h>
+#include <Windows.h>
 #include <xnamath.h>
 
 struct DirectLight{

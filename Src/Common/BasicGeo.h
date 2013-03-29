@@ -19,7 +19,7 @@ class BasicGeo{
 				Position(p),
 				Normal(n),
 				TangentU(t),
-				TexCoor(uv){}
+				TexCoord(uv){}
 
 				Vertex(	float px, float py, float pz,
 					float nx, float ny, float nz,
@@ -29,12 +29,12 @@ class BasicGeo{
 					Position(px, py, pz),
 					Normal(nx, ny, nz),
 					TangentU(tx, ty, tz),
-					TexCoor(u, v){}
+					TexCoord(u, v){}
 
 				XMFLOAT3 Position;
 				XMFLOAT3 Normal;
 				XMFLOAT3 TangentU;
-				XMFLOAT2 TexCoor;
+				XMFLOAT2 TexCoord;
 		};
 
 		struct MeshData{
@@ -43,6 +43,6 @@ class BasicGeo{
 		};
 
 		void CreateSphere(float radius, UINT sliceCount, UINT stackCount, MeshData& meshData);
-}
+};
 
 #endif    //__BASICGEO_H__

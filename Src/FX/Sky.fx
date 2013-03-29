@@ -41,7 +41,7 @@ VertexOut VS(VertexIn vin){
 	VertexOut vout;
 
 	//Set z=w so that z/w=1 (skydome always on far plane)
-	vout.PosH = mul(float4(vin,PosL, 1.0f), g_worldViewProj).xyww;
+	vout.PosH = mul(float4(vin.PosL, 1.0f), g_worldViewProj).xyww;
 
 	//Use local vertex position as cubemap lookup vector.
 	vout.PosL = vin.PosL;
@@ -51,7 +51,7 @@ VertexOut VS(VertexIn vin){
 
 float4 PS(VertexOut pin) : SV_Target{
 
-	return g_cubeMap.Sample(samTriLinearSam, pinPosL);
+	return g_cubeMap.Sample(samTriLinearSam, pin.PosL);
 }
 
 technique11 SkyTech{
@@ -62,6 +62,6 @@ technique11 SkyTech{
 		SetPixelShader(CompileShader(ps_5_0, PS()));
 
 		SetRasterizerState(NoCull);
-		SetDepthStencilState(LessEqualDDS, 0);
+		SetDepthStencilState(LessEqualDSS, 0);
 	}
 }

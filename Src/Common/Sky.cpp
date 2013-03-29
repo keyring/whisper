@@ -19,7 +19,7 @@ Sky::Sky(ID3D11Device *device, const std::wstring &cubeMapFilename, float skySph
 	BasicGeo geo;
 	geo.CreateSphere(skySphereRadius, 30, 30, sphere);
 
-	const int vertexNum = sphere.Vertices.size();
+	const UINT vertexNum = sphere.Vertices.size();
 	std::vector<XMFLOAT3> vertices(vertexNum);
 
 	for(size_t i = 0; i < vertexNum; ++i){
@@ -77,8 +77,8 @@ void Sky::Draw(ID3D11DeviceContext *dc, const Camera &camera){
 	
 	XMMATRIX WVP = XMMatrixMultiply(T, camera.getViewProjMat());
 
-	Effects::SkyFX->SetWorldViewProj(WVP);
-	Effects::SkyFX->SetCubeMap(m_skySRV);
+	Effects::SkyFX->setWorldViewProjMat(WVP);
+	Effects::SkyFX->setCubeMap(m_skySRV);
 
 	UINT stride = sizeof(XMFLOAT3);
 	UINT offset = 0;
