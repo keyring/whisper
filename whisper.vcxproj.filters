@@ -39,6 +39,15 @@
     <ClCompile Include="Src\Common\Sky.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Test\Effects.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Test\Vertex..cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Common\Light.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Common\WinApp.h">
@@ -62,5 +71,25 @@
     <ClInclude Include="Src\Common\d3dx11effect.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Test\Effects.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Test\Vertex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Common\Light.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Src\FX\Light.fx">
+      <Filter>FX</Filter>
+    </None>
+    <None Include="Basic.fx">
+      <Filter>FX</Filter>
+    </None>
+    <None Include="Src\FX\Sky.fx">
+      <Filter>FX</Filter>
+    </None>
   </ItemGroup>
 </Project>

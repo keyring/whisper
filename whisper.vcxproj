@@ -85,18 +85,29 @@
     <ClCompile Include="Src\Common\AppUtil.cpp" />
     <ClCompile Include="Src\Common\BasicGeo.cpp" />
     <ClCompile Include="Src\Common\Camera.cpp" />
+    <ClCompile Include="Src\Common\Light.cpp" />
     <ClCompile Include="Src\Common\Sky.cpp" />
     <ClCompile Include="Src\Common\Timer.cpp" />
     <ClCompile Include="Src\Common\WinApp.cpp" />
+    <ClCompile Include="Src\Test\Effects.cpp" />
+    <ClCompile Include="Src\Test\Vertex..cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Common\AppUtil.h" />
     <ClInclude Include="Src\Common\BasicGeo.h" />
     <ClInclude Include="Src\Common\Camera.h" />
     <ClInclude Include="Src\Common\d3dx11effect.h" />
+    <ClInclude Include="Src\Common\Light.h" />
     <ClInclude Include="Src\Common\Sky.h" />
     <ClInclude Include="Src\Common\Timer.h" />
     <ClInclude Include="Src\Common\WinApp.h" />
+    <ClInclude Include="Src\Test\Effects.h" />
+    <ClInclude Include="Src\Test\Vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Basic.fx" />
+    <None Include="Src\FX\Light.fx" />
+    <None Include="Src\FX\Sky.fx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
