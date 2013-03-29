@@ -1,4 +1,4 @@
-﻿Build started 2013/3/29 15:11:00.
+﻿Build started 2013/3/29 17:51:58.
      1>Project "D:\documents\GitHub\whisper\whisper.vcxproj" on node 2 (clean target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\whisper.lastbuildstate".
@@ -6,4 +6,4 @@
 
 生成成功。
 
-Time Elapsed 00:00:00.02
+Time Elapsed 00:00:00.04
