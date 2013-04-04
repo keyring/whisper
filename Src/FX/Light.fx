@@ -76,7 +76,7 @@ void ComputeDirectLight( Material mater,
 	//Flatten to avoid dynamic branching.
 	[flatten]
 	if(diffuseFactor > 0.0f){
-		float v          = reflect(-lightVec, normal);
+		float3 v          = reflect(-lightVec, normal);
 		float specFactor = pow(max(dot(v, toEye), 0.0f), mater.Specular.w);
 		
 		diffuse  = diffuseFactor * mater.Diffuse * L.Diffuse;

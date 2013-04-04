@@ -30,14 +30,8 @@
 
 #if defined(DEBUG) | defined(_DEBUG)
 	#ifndef HR
-	#define HR(x)                                              \
-	{                                                          \
-		HRESULT hr = (x);                                      \
-		if(FAILED(hr))                                         \
-		{                                                      \
-			DXTrace(__FILE__, (DWORD)__LINE__, hr, L#x, true); \
-		}                                                      \
-	}
+	#define HR(x){ HRESULT hr = (x); if(FAILED(hr)){	\
+	DXTrace(__FILE__, (DWORD)__LINE__, hr, L#x, true); }}
 	#endif
 
 #else
@@ -46,10 +40,22 @@
 	#endif
 #endif 
 
-#define SafeRelease(x) { if(x) { x->Release(); x = NULL; } }
-#define SafeDelete(x) { delete x;  x = NULL; }
+#ifndef SafeRelease
+#define SafeRelease(x) { if(x) { (x)->Release(); (x) = NULL; } }
+#endif
 
-inline int KeyDown(int x) { return GetAsyncKeyState(x) & 0x8000; }
+#ifndef SafeDelete
+#define SafeDelete(x) { if(x) { delete (x);  (x) = NULL; } }
+#endif
+
+#ifndef SafeDeleteArray
+#define SafeDeleteArray(x) { if(x) { delete[] (x); (x) = NULL;} }
+#endif
+
+#define KeyDown(x) ((GetAsyncKeyState(x) & 0x8000) ? 1 : 0)
+#define KeyUp(x)   ((GetAsyncKeyState(x) & 0x8000) ? 0 : 1)
+
+bool SphereConeTest ( FXMVECTOR sphereCenter, float radius, float fov, FXMVECTOR eyePt, FXMVECTOR lookAt);
 
 namespace COLORS{
 	XMGLOBALCONST XMVECTORF32 White     = {1.0f, 1.0f, 1.0f, 1.0f};

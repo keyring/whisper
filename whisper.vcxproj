@@ -91,7 +91,9 @@
     <ClCompile Include="Src\Common\Timer.cpp" />
     <ClCompile Include="Src\Common\Vertex..cpp" />
     <ClCompile Include="Src\Common\WinApp.cpp" />
+    <ClCompile Include="Src\Test\BBGrassPatch.cpp" />
     <ClCompile Include="Src\Test\CubeMapDemo.cpp" />
+    <ClCompile Include="Src\Test\Grass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Common\AppUtil.h" />
@@ -104,6 +106,9 @@
     <ClInclude Include="Src\Common\Timer.h" />
     <ClInclude Include="Src\Common\Vertex.h" />
     <ClInclude Include="Src\Common\WinApp.h" />
+    <ClInclude Include="Src\Test\BBGrassPatch.h" />
+    <ClInclude Include="Src\Test\Grass.h" />
+    <ClInclude Include="Src\Test\InstancedBillboard.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Src\FX\Basic.fx">

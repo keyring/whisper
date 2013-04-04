@@ -192,7 +192,6 @@ void CubeMap::OnMouseMove(WPARAM btnState, int x, int y){
 	m_lastMousePos.y = y;
 }
 
-
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int showCmd){
 
 	//Enable run-time memory check for debug builds.
