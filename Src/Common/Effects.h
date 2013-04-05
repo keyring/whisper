@@ -126,6 +126,39 @@ class SkyEffect : public Effect{
 };
 
 
+/*---- GrassEffect ----*/
+
+class GrassEffect : public Effect{
+
+	public:
+		GrassEffect(ID3D11Device *device, const std::wstring &filename);
+		~GrassEffect();
+
+		void setWorldViewProjMat(CXMMATRIX M){
+
+			worldViewProjMat->SetMatrix(reinterpret_cast<const float*>(&M));
+		}
+
+		void setDiffuseMap(ID3D11ShaderResourceView *tex){
+
+			diffuseMap->SetResource(tex);
+		}
+
+		void setTime(float dt){
+			
+			timeVar->SetFloat(dt);
+		}
+
+		ID3DX11EffectTechnique *GrassTech;
+
+		ID3DX11EffectMatrixVariable *worldViewProjMat;
+
+		ID3DX11EffectScalarVariable *timeVar;
+
+		ID3DX11EffectShaderResourceVariable *diffuseMap;
+};
+
+
 /*---- Effects ----*/
 
 class Effects{
@@ -133,6 +166,7 @@ class Effects{
 	public:
 		static BasicEffect *BasicFX;
 		static SkyEffect *SkyFX;
+		static GrassEffect *GrassFX;
 
 		static void InitAll(ID3D11Device *device);
 		static void DestroyAll();

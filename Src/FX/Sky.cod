@@ -35,7 +35,7 @@ fxgroup
     //
     // 1 technique(s)
     //
-    technique11 SkyTech
+    technique11 SkyDome
     {
         pass p0
         {

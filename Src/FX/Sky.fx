@@ -54,7 +54,7 @@ float4 PS(VertexOut pin) : SV_Target{
 	return g_cubeMap.Sample(samTriLinearSam, pin.PosL);
 }
 
-technique11 SkyTech{
+technique11 SkyDome{
 
 	pass p0{
 		SetVertexShader(CompileShader(vs_5_0, VS()));

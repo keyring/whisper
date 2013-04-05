@@ -91,9 +91,8 @@
     <ClCompile Include="Src\Common\Timer.cpp" />
     <ClCompile Include="Src\Common\Vertex..cpp" />
     <ClCompile Include="Src\Common\WinApp.cpp" />
-    <ClCompile Include="Src\Test\BBGrassPatch.cpp" />
-    <ClCompile Include="Src\Test\CubeMapDemo.cpp" />
     <ClCompile Include="Src\Test\Grass.cpp" />
+    <ClCompile Include="Src\Test\GrassDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Common\AppUtil.h" />
@@ -106,12 +105,20 @@
     <ClInclude Include="Src\Common\Timer.h" />
     <ClInclude Include="Src\Common\Vertex.h" />
     <ClInclude Include="Src\Common\WinApp.h" />
-    <ClInclude Include="Src\Test\BBGrassPatch.h" />
     <ClInclude Include="Src\Test\Grass.h" />
-    <ClInclude Include="Src\Test\InstancedBillboard.h" />
+    <ClInclude Include="Src\Test\GrassDemo.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Src\FX\Basic.fx">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /Fc /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\%(Filename).fxo" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc compile for debug: %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\%(Filename).fxo</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">fxc /T fx_5_0 /Fo "%(RelativeDir)\%(Filename).fxo" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">fxc compile for release: %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)\%(Filename).fxo</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="Src\FX\Grass.fx">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /Fc /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\%(Filename).fxo" "%(FullPath)"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc compile for debug: %(FullPath)</Message>
