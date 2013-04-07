@@ -5,7 +5,7 @@
  * 					--code with gVim :)
  *************************************************************************/
 
-#include "Grass.h"
+#include "GrassInstancing.h"
 #include "Camera.h"
 
 static Vertex::Grass grassBBVerts[] = {

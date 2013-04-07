@@ -103,7 +103,7 @@ void Effects::InitAll(ID3D11Device *device){
 
 	BasicFX = new BasicEffect(device, L"Src/FX/Basic.fxo");
 	SkyFX   = new SkyEffect(device, L"Src/FX/Sky.fxo");
-	GrassFX = new GrassEffect(device, L"Src/FX/Grass.fxo");
+	GrassFX = new GrassEffect(device, L"Src/FX/Grass_instancing.fxo");
 }
 
 void Effects::DestroyAll(){

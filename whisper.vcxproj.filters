@@ -51,7 +51,7 @@
     <ClCompile Include="Src\Test\GrassDemo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Test\Grass.cpp">
+    <ClCompile Include="Src\Test\GrassInstancing.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,7 +89,7 @@
     <ClInclude Include="Src\Test\GrassDemo.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Test\Grass.h">
+    <ClInclude Include="Src\Test\GrassInstancing.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -100,7 +100,7 @@
     <CustomBuild Include="Src\FX\Basic.fx">
       <Filter>FX</Filter>
     </CustomBuild>
-    <CustomBuild Include="Src\FX\Grass.fx">
+    <CustomBuild Include="Src\FX\Grass_instancing.fx">
       <Filter>FX</Filter>
     </CustomBuild>
   </ItemGroup>

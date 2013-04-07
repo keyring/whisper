@@ -15,7 +15,7 @@
 #include "Vertex.h"
 #include "Camera.h"
 #include "Sky.h"
-#include "Grass.h"
+#include "GrassInstancing.h"
 
 class GrassDemo : public WinApp{
 
