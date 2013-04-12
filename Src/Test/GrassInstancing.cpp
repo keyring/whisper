@@ -140,8 +140,9 @@ void Grass::Cull( ID3D11DeviceContext* dc, float fov, const Camera &camera){
 
 void Grass::Draw(ID3D11DeviceContext *dc, const Camera &camera){
 
-	XMFLOAT3 eyePos = camera.getPosition();
-	XMMATRIX T = XMMatrixTranslation(eyePos.x, eyePos.y, eyePos.z);
+	//XMFLOAT3 eyePos = camera.getPosition();
+	//XMMATRIX T = XMMatrixTranslation(eyePos.x, eyePos.y, eyePos.z);
+	XMMATRIX T = XMMatrixIdentity();
 	
 	XMMATRIX WVP = XMMatrixMultiply(T, camera.getViewProjMat());
 

@@ -1,10 +1,10 @@
 /****************************************************************************
  *
- * 	CubeMapDemo.cpp by z.keyring (c) 2013 All Rights Reserved.
+ * 	GrassDemo.cpp by z.keyring (c) 2013 All Rights Reserved.
  *
  * 					--code with gVim :)
  *
- *	Demo skydome with cube mapping
+ *	Demo grass with instancing
  ***************************************************************************/
 
 #include "GrassDemo.h"
@@ -59,14 +59,15 @@ bool GrassDemo::Init(){
 
 	m_sky = new Sky(m_d3dDevice, L"Resources/Textures/cloud_cube.dds", 5000.0f);
 
-	const XMVECTOR terrainCenter = { 0.0f, -10.0f, 0.0f };
-	const float terrainRadius = 45.0f;
-	float patchRadius = 15.0f;
+	const XMVECTOR terrainCenter = { 0.0f, 10.0f, 0.0f };
+	const float terrainRadius = 450.0f;
+
 	int grassBladePerPatch = 70;
+	float patchRadius = 45.0f;
 
 	m_grass = new Grass(m_d3dDevice,
 						m_d3dDeviceContext,
-						L"Resources/Textures/grassY.dds",
+						L"Resources/Textures/grassG.dds",
 						terrainCenter,
 						terrainRadius,
 						grassBladePerPatch,
