@@ -59,8 +59,8 @@ bool GrassDemo::Init(){
 
 	m_sky = new Sky(m_d3dDevice, L"Resources/Textures/cloud_cube.dds", 5000.0f);
 
-	const XMVECTOR terrainCenter = { 0.0f, 10.0f, 0.0f };
-	const float terrainRadius = 450.0f;
+	const XMVECTOR terrainCenter = { 0.0f, 0.0f, 0.0f };
+	const float terrainRadius = 1000.0f;
 
 	int grassBladePerPatch = 70;
 	float patchRadius = 45.0f;

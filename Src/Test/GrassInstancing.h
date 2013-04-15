@@ -12,7 +12,7 @@
 #include "Vertex.h"
 #include "Effects.h"
 
-#define DEFAULT_NUM_GRASS_BB 70
+#define DEFAULT_NUM_GRASS_BB 100
 
 class Camera;
 

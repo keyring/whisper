@@ -30,11 +30,11 @@ static XMFLOAT2 defaultPatchPos[] = {
 	XMFLOAT2(  0.0f,  -20.0f  ) ,
 	XMFLOAT2( -20.0f, -20.0f ) ,
 
-	XMFLOAT2(  20.0f,  40.0f ) ,
+	XMFLOAT2(  40.0f,  40.0f ) ,
 	XMFLOAT2(  20.0f,  40.0f ) ,
 	XMFLOAT2(  0.0f,   40.0f ) ,
 	XMFLOAT2( -20.0f,  40.0f ),
-	XMFLOAT2( -40.0,  40.0f ),
+	XMFLOAT2( -40.0f,  40.0f ),
 
 	XMFLOAT2(  40.0f,  20.0f ) ,
 	XMFLOAT2(  20.0f,  20.0f ) ,
@@ -140,8 +140,6 @@ void Grass::Cull( ID3D11DeviceContext* dc, float fov, const Camera &camera){
 
 void Grass::Draw(ID3D11DeviceContext *dc, const Camera &camera){
 
-	//XMFLOAT3 eyePos = camera.getPosition();
-	//XMMATRIX T = XMMatrixTranslation(eyePos.x, eyePos.y, eyePos.z);
 	XMMATRIX T = XMMatrixIdentity();
 	
 	XMMATRIX WVP = XMMatrixMultiply(T, camera.getViewProjMat());
