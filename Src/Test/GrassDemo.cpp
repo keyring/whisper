@@ -131,21 +131,21 @@ void GrassDemo::RenderScene(){
 	m_d3dDeviceContext->IASetInputLayout(InputLayouts::Basic);
 	m_d3dDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	UINT stride = sizeof(Vertex::Basic);
-	UINT offset = 0;
+	//UINT stride = sizeof(Vertex::Basic);
+	//UINT offset = 0;
 
 	m_camera.UpdateViewMat();
 
-	XMMATRIX view  = m_camera.getViewMat();
-	XMMATRIX proj  = m_camera.getProjMat();
-	XMMATRIX viewproj = m_camera.getViewProjMat();
+	//XMMATRIX view  = m_camera.getViewMat();
+	//XMMATRIX proj  = m_camera.getProjMat();
+	//XMMATRIX viewproj = m_camera.getViewProjMat();
 
-	float blendFactor[] = { 0.0f, 0.0f, 0.0f, 0.0f};
+	//float blendFactor[] = { 0.0f, 0.0f, 0.0f, 0.0f};
 
-	//Set Per frame constants
-	Effects::BasicFX->setDirLights(m_dirLights);
-	Effects::BasicFX->setEyePosVec(m_camera.getPosition());
-	Effects::BasicFX->setCubeMap(m_sky->CreateSkySRV());
+	////Set Per frame constants
+	//Effects::BasicFX->setDirLights(m_dirLights);
+	//Effects::BasicFX->setEyePosVec(m_camera.getPosition());
+	//Effects::BasicFX->setCubeMap(m_sky->CreateSkySRV());
 
 	m_sky->Draw(m_d3dDeviceContext, m_camera);
 

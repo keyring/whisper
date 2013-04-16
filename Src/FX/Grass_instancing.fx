@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------------
-// File: Grass.fx
+// File: Grass_instancing.fx
 //
 //--------------------------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ DepthStencilState EnableDepthWrite
 struct VertexIn
 {
     float3 Pos			: POSITION;         //position
-    float2 Tex			: TEXCOORD;        //texture coordinate
+    float2 Tex			: TEXCOORD0;        //texture coordinate
     float2 vPPos		: vPPos;            // patchPosition
 };
 

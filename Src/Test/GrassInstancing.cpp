@@ -140,9 +140,9 @@ void Grass::Cull( ID3D11DeviceContext* dc, float fov, const Camera &camera){
 
 void Grass::Draw(ID3D11DeviceContext *dc, const Camera &camera){
 
-	XMMATRIX T = XMMatrixIdentity();
+	XMMATRIX world = XMMatrixIdentity();
 	
-	XMMATRIX WVP = XMMatrixMultiply(T, camera.getViewProjMat());
+	XMMATRIX WVP = XMMatrixMultiply(world, camera.getViewProjMat());
 
 	Effects::GrassFX->setWorldViewProjMat(WVP);
 	Effects::GrassFX->setDiffuseMap(m_grassSRV);
