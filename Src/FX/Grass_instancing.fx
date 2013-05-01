@@ -8,8 +8,7 @@
  *****************************************************************************/
 Texture2D g_diffuseMap;
 
-SamplerState samLinear
-{
+SamplerState samLinear{
     Filter = MIN_MAG_MIP_LINEAR;
     AddressU = Wrap;
     AddressV = Wrap;
@@ -20,8 +19,7 @@ cbuffer cbPerFrame{
     float g_time;
 };
 
-BlendState QuadAlphaBlendState
-{
+BlendState QuadAlphaBlendState{
     AlphaToCoverageEnable = TRUE;
 	BlendEnable[0] = TRUE;
     SrcBlend = ONE;
@@ -30,29 +28,25 @@ BlendState QuadAlphaBlendState
     RenderTargetWriteMask[0] = 0x0F;
 };
 
-RasterizerState EnableMSAA
-{
+RasterizerState EnableMSAA{
     CullMode = BACK;
     MultisampleEnable = TRUE;
 };
 
-DepthStencilState EnableDepthWrite
-{
+DepthStencilState EnableDepthWrite{
     DepthEnable = TRUE;
     DepthWriteMask = ALL;
 };
 
 
-struct VertexIn
-{
+struct VertexIn{
     float3 Pos			: POSITION;         //position
     float2 Tex			: TEXCOORD;         //texture coordinate
     float2 vPPos		: vPPos;            // patchPosition
 };
 
 
-struct VertexOut
-{
+struct VertexOut{
     float4 Pos			: SV_POSITION;
     float2 Tex			: TEXCOORD;
 };
@@ -61,8 +55,8 @@ struct VertexOut
 // Vertex Shader
 //--------------------------------------------------------------------------------------
 
-VertexOut RenderGrassVS( VertexIn vin )
-{
+VertexOut RenderGrassVS( VertexIn vin ){
+
 	VertexOut vout;
 
 	// Out position 
@@ -80,17 +74,17 @@ VertexOut RenderGrassVS( VertexIn vin )
 	return vout;
 }
 
-float4 RenderGrassPS( VertexOut pin) : SV_Target
-{
+float4 RenderGrassPS( VertexOut pin) : SV_Target{
+
     float4 outputColor = g_diffuseMap.Sample( samLinear, pin.Tex );
   
     return outputColor;
 }
 
-technique11 GrassRender
-{
-    pass p0
-    {          
+technique11 GrassRender{
+
+    pass p0{      
+	    
         SetVertexShader( CompileShader( vs_5_0,RenderGrassVS() ) );
         SetGeometryShader( NULL );
         SetPixelShader( CompileShader( ps_5_0, RenderGrassPS() ) );
