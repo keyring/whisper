@@ -122,7 +122,7 @@ fxgroup
                 dcl_output o1.xy
                 dcl_temps 2
                 
-                #line 70 "D:\documents\GitHub\whisper\Src\FX\Grass_instancing.fx"
+                #line 64 "D:\documents\GitHub\whisper\Src\FX\Grass_instancing.fx"
                 mov r0.xy, v0.xzxx  // vGrassPos<0,2>
                 add r1.x, r0.x, v2.x  // vGrassPos<0:Inf>
                 add r1.z, r0.y, v2.y  // vGrassPos<2:Inf>
@@ -133,7 +133,7 @@ fxgroup
                 dp4 r0.z, r1.xyzw, cb0[2].xyzw  // vout<2:NaN:Inf>
                 dp4 r0.w, r1.xyzw, cb0[3].xyzw  // vout<3:NaN:Inf>
                 
-                #line 78
+                #line 72
                 mov r1.xy, v1.xyxx  // vout<4,5>
                 mov o0.xyzw, r0.xyzw  // RenderGrassVS<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf,3:NaN:Inf>
                 mov o1.xy, r1.xyxx  // RenderGrassVS<4,5>
@@ -178,7 +178,7 @@ fxgroup
                 dcl_output o0.xyzw
                 dcl_temps 1
                 
-                #line 85 "D:\documents\GitHub\whisper\Src\FX\Grass_instancing.fx"
+                #line 79 "D:\documents\GitHub\whisper\Src\FX\Grass_instancing.fx"
                 sample_indexable(texture2d)(float,float,float,float) r0.xyzw, v1.xyxx, t0.xyzw, s0  // outputColor<0:Inf,1:Inf,2:Inf,3:Inf>
                 mov o0.xyzw, r0.xyzw  // RenderGrassPS<0:Inf,1:Inf,2:Inf,3:Inf>
                 ret 

@@ -11,6 +11,58 @@
 #include "Vertex.h"
 #include "Effects.h"
 
+
+static ID3D11Buffer* CreateVertexBuffer( ID3D11Device *device, UINT size, bool dynamic, bool streamout, D3D11_SUBRESOURCE_DATA *pData){
+
+	D3D11_BUFFER_DESC desc;
+	desc.ByteWidth = size;
+	desc.MiscFlags = 0;
+	desc.StructureByteStride = 0;
+
+	if(streamout)
+		desc.BindFlags = D3D11_BIND_VERTEX_BUFFER | D3D11_BIND_STREAM_OUTPUT;
+	else
+		desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+
+	if(dynamic){
+		desc.Usage = D3D11_USAGE_DYNAMIC;
+		desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	}
+	else{
+		desc.Usage = D3D11_USAGE_IMMUTABLE;
+		desc.CPUAccessFlags = 0;
+	}
+
+	ID3D11Buffer *pBuffer = 0;
+	HR(device->CreateBuffer( &desc, pData, &pBuffer ));
+
+	return (pBuffer);
+}
+
+static ID3D11Buffer* CreateIndexBuffer( ID3D11Device *device, UINT size, bool dynamic, D3D11_SUBRESOURCE_DATA *pData){
+
+	D3D11_BUFFER_DESC desc;
+	desc.ByteWidth = size;
+	desc.MiscFlags = 0;
+	desc.StructureByteStride = 0;
+	desc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+
+	if(dynamic){
+		desc.Usage = D3D11_USAGE_DYNAMIC;
+		desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	}
+	else{
+		desc.Usage = D3D11_USAGE_IMMUTABLE;
+		desc.CPUAccessFlags = 0;
+	}
+
+	ID3D11Buffer *pBuffer = 0;
+	HR( device->CreateBuffer( &desc, pData, &pBuffer));
+
+	return (pBuffer);
+}
+
+
 Sky::Sky(ID3D11Device *device, const std::wstring &cubeMapFilename, float skySphereRadius){
 
 	HR(D3DX11CreateShaderResourceViewFromFile(device, cubeMapFilename.c_str(), NULL, NULL, &m_skySRV, NULL));
@@ -26,28 +78,12 @@ Sky::Sky(ID3D11Device *device, const std::wstring &cubeMapFilename, float skySph
 		vertices[i] = sphere.Vertices[i].Position;
 	}
 
-	D3D11_BUFFER_DESC vbd;
-	vbd.Usage       = D3D11_USAGE_IMMUTABLE;
-	vbd.ByteWidth   = sizeof(XMFLOAT3) * vertices.size();
-	vbd.BindFlags   = D3D11_BIND_VERTEX_BUFFER;
-	vbd.CPUAccessFlags = 0;
-	vbd.MiscFlags   = 0;
-	vbd.StructureByteStride = 0;
-
 	D3D11_SUBRESOURCE_DATA vInitData;
 	vInitData.pSysMem = &vertices[0];
 
-	HR(device->CreateBuffer(&vbd, &vInitData, &m_VB));
+	m_VB = CreateVertexBuffer( device, sizeof(XMFLOAT3)*vertices.size(), false, false, &vInitData);
 
 	m_indexCount = sphere.Indices.size();
-
-	D3D11_BUFFER_DESC ibd;
-	ibd.Usage       = D3D11_USAGE_IMMUTABLE;
-	ibd.ByteWidth   = sizeof(USHORT) * m_indexCount;
-	ibd.BindFlags   = D3D11_BIND_INDEX_BUFFER;
-	ibd.CPUAccessFlags = 0;
-	ibd.StructureByteStride = 0;
-	ibd.MiscFlags   = 0;
 
 	std::vector<USHORT> indices16;
 	indices16.assign(sphere.Indices.begin(), sphere.Indices.end());
@@ -55,7 +91,8 @@ Sky::Sky(ID3D11Device *device, const std::wstring &cubeMapFilename, float skySph
 	D3D11_SUBRESOURCE_DATA iInitData;
 	iInitData.pSysMem = &indices16[0];
 
-	HR(device->CreateBuffer(&ibd, &iInitData, &m_IB));
+	m_IB = CreateIndexBuffer( device, sizeof(USHORT)*m_indexCount, false, &iInitData);
+
 }
 
 Sky::~Sky(){
