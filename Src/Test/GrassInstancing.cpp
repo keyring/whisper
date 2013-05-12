@@ -45,7 +45,8 @@ static XMFLOAT2 defaultPatchPos[] = {
 
 const int defaultPatchCount = 16;
 
-Grass::Grass(ID3D11Device *device, 
+Grass::Grass(
+	ID3D11Device *device, 
 	ID3D11DeviceContext *dc, 
 	const std::wstring &diffuseMapFilename,
 	FXMVECTOR surfaceCenter, 
@@ -165,8 +166,8 @@ void Grass::Draw(ID3D11DeviceContext *dc, const Camera &camera){
 	for(UINT p = 0; p < techDesc.Passes; ++p){
 		ID3DX11EffectPass *pass = Effects::GrassFX->GrassTech->GetPassByIndex(p);
 		pass->Apply(0, dc);
-		dc->DrawInstanced(m_vertexCount,   /*number of vertex per instance */
-						m_instCount,    /* number of instances */
+		dc->DrawInstanced(m_vertexCount,/*number of vertex per instance */
+						m_instCount,	/* number of instances */
 						0,				/* index of the first vertex */
 						0);				/* index of the first instance */
 	}
