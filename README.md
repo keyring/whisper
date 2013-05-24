@@ -1,4 +1,4 @@
 whisper
 =======
 
-Rendering Grass in Real-Time
+Rendering Grass in Real-Time with Direct3D 11.
